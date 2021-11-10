@@ -1,0 +1,81 @@
+$text:rgb(167, 167, 167);
+$text-strong:rgb(192, 192, 192);
+$text-light:rgb(48, 48, 48);
+$background:rgb(20, 20, 20);
+
+$fractionsBoard:repeat(8,1fr);
+
+$whiteTileColor:rgb(248, 248, 248);
+$blackTileColor:rgb(31, 31, 31);
+
+$tileBorderColor:#6664e9;
+$tileBorder:4px solid $tileBorderColor;
+$tileBorderTransitionDuration:.1s;
+
+
+$pieceOpponentColor:rgb(216, 42, 42);
+$pieceHomeColor:rgb(83, 76, 184);
+
+@import 'bulma';
+
+#app{
+    background:$background;
+    max-height:100vh;
+    min-height:100vh;
+    overflow: hidden;
+}
+
+.board{
+    display:grid;
+    grid-template-columns:$fractionsBoard;
+    grid-template-rows:$fractionsBoard;
+    border:#9f8600 groove 10px;
+}
+
+// Start Tile
+
+.tile{
+    width: 4rem;
+    height: 4rem;
+    transition:$tileBorderTransitionDuration;
+}
+
+.tile-is-hovered{
+    border:$tileBorder;
+}
+
+// TODO fix this animation to look like hover animation
+.tile-is-focused{
+    animation:blinkingTile $tileBorderTransitionDuration infinite alternate;
+}
+
+.tile-is-white{
+    background:$whiteTileColor;
+}
+
+.tile-is-black{
+    background:$blackTileColor;
+}
+
+@keyframes blinkingTile{
+    to{
+        border:none;
+    }
+    from{
+        border:$tileBorder;
+    }
+}
+
+// End Tile
+
+// Start Piece
+
+.piece-is-opponent{
+    color:$pieceOpponentColor;
+}
+
+.piece-is-home{
+    color:$pieceHomeColor;
+}
+
+// End Piece
